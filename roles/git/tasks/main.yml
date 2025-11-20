@@ -1,0 +1,56 @@
+---
+- name: install git tools
+  pacman:
+    name:
+      - git
+      - git-lfs
+      - gitg
+    state: latest
+    update_cache: yes
+
+- name: install meld
+  pacman:
+    name: meld
+    state: latest
+    update_cache: yes
+
+- name: install gnome keyring dev
+  pacman:
+    name: libsecret
+    state: latest
+    update_cache: yes
+
+- name: compile git gnome keyring helper
+  command: make
+  args:
+    chdir: /usr/share/git/credential/libsecret
+
+- name: add gnome keyring helper to git
+  become: true
+  become_user: "{{ main_user }}"
+  command: git config --global credential.helper /usr/share/git/credential/libsecret/git-credential-libsecret
+
+- name: link gitignore
+  become: true
+  become_user: "{{ main_user }}"
+  file:
+    src: ~/git/setup/profile/git/gitignore
+    dest: ~/.gitignore
+    state: link
+
+- name: setup git config
+  become: true
+  become_user: "{{ main_user }}"
+  command: git config --global {{ item }}
+  with_items:
+    - alias.co checkout
+    - alias.ci commit
+    - alias.st status
+    - alias.up 'pull --rebase'
+    - alias.br branch
+    - alias.dt difftool
+    - core.editor vim
+    - core.excludesfile ~/.gitignore
+    - color.ui auto
+    - push.default current
+    - init.defaultBranch main
