@@ -9,7 +9,7 @@
   become: true
   become_user: "{{ main_user }}"
   file:
-    src: '~/git/setup/profile/bash/dot_bashrc'
+    src: '~/git/setup/profile/bash/dot_bashrc.omarchy'
     dest: '~/.bashrc'
     state: link
     force: true
