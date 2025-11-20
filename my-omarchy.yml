@@ -1,0 +1,35 @@
+---
+- name: Configure desktop
+  hosts: localhost
+
+  roles:
+    #- { role: base, tags: ['base'] }
+    #- { role: ssh, tags: ['ssh'] }
+    - { role: profile, tags: ['profile'] }
+    #- { role: git, tags: ['git'] }
+    #- { role: udev, tags: ['udev'] }
+    #- { role: x1c, tags: ['x1c'] }
+    #- { role: asdf, tags: ['asdf'] }
+    #- { role: gnome, tags: ['gnome'] }
+    #- { role: utils, tags: ['utils'] }
+    #- { role: i3, tags: ['i3'] }
+    #- { role: network-tools, tags: ['network-tools'] }
+    #- { role: terminal, tags: ['terminal'] }
+    #- { role: firefox, tags: ['firefox'] }
+    #- { role: chromium, tags: ['chromium'] }
+    #- { role: nitrokey, tags: ['nitrokey'] }
+    #- { role: vim, tags: ['vim'] }
+    #- { role: ruby, tags: ['ruby'] }
+    #- { role: docker, tags: ['docker'] }
+    #- { role: msg-tools, tags: ['msg-tools'] }
+    #- { role: video, tags: ['video'] }
+    #- { role: hyprland, tags: ['hyprland'] }
+    #- { role: nextcloud, tags: ['nextcloud'] }
+    #- { role: android, tags: ['android'] }
+    #- { role: office, tags: ['office'] }
+    #- { role: gfx, tags: ['gfx'] }
+    #- { role: kvm, tags: ['kvm'] }
+    #- { role: nix, tags: ['nix'] }
+    #- { role: printer, tags: ['printer'] }
+    #- { role: astro, tags: ['astro'] }
+    #- { role: podman, tags: ['podman'] }
