@@ -5,4 +5,7 @@ else
   sudo ansible-playbook my-omarchy.yml -t=$1 --extra-vars "main_user=$USER"
 fi
 
+# do user space tasks that cannot be done in ansible context (user session, etc)
+omarchy-theme-set star-blue
+
 exit 0

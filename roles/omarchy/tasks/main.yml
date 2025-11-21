@@ -3,11 +3,3 @@
   become: true
   become_user: "{{ main_user }}"
   git: repo=https://github.com/mtnstar/omarchy-star-blue-theme.git dest=~/config/omarchy/star-blue update=yes
-
-- name: set omarchy theme to star blue
-  become: true
-  become_user: "{{ main_user }}"
-  shell: |
-    bash -lc '
-    PATH="$PATH:/home/{{ main_user }}/.local/share/omarchy/bin"
-    omarchy-theme-set star-blue'
