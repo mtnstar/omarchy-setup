@@ -3,3 +3,13 @@
   become: true
   become_user: "{{ main_user }}"
   git: repo=https://github.com/mtnstar/omarchy-star-blue-theme.git dest=~/config/omarchy/star-blue update=yes
+
+- name: install kitty
+  pacman:
+    name:
+      - kitty
+
+- name: set kitty as default terminal
+  become: true
+  become_user: "{{ main_user }}"
+  command: omarchy-install-terminal kitty
