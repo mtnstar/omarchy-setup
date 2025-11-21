@@ -7,6 +7,7 @@
     #- { role: ssh, tags: ['ssh'] }
     - { role: profile, tags: ['profile'] }
     - { role: git, tags: ['git'] }
+    - { role: omarchy, tags: ['omarchy'] }
     #- { role: udev, tags: ['udev'] }
     #- { role: x1c, tags: ['x1c'] }
     #- { role: asdf, tags: ['asdf'] }
