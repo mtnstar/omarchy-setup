@@ -8,6 +8,9 @@
     - { role: profile, tags: ['profile'] }
     - { role: git, tags: ['git'] }
     - { role: omarchy, tags: ['omarchy'] }
+    - { role: nitrokey, tags: ['nitrokey'] }
+    - { role: podman, tags: ['podman'] }
+    - { role: nextcloud, tags: ['nextcloud'] }
     #- { role: udev, tags: ['udev'] }
     #- { role: x1c, tags: ['x1c'] }
     #- { role: asdf, tags: ['asdf'] }
@@ -18,14 +21,12 @@
     #- { role: terminal, tags: ['terminal'] }
     #- { role: firefox, tags: ['firefox'] }
     #- { role: chromium, tags: ['chromium'] }
-    #- { role: nitrokey, tags: ['nitrokey'] }
     #- { role: vim, tags: ['vim'] }
     #- { role: ruby, tags: ['ruby'] }
     #- { role: docker, tags: ['docker'] }
     #- { role: msg-tools, tags: ['msg-tools'] }
     #- { role: video, tags: ['video'] }
     #- { role: hyprland, tags: ['hyprland'] }
-    #- { role: nextcloud, tags: ['nextcloud'] }
     #- { role: android, tags: ['android'] }
     #- { role: office, tags: ['office'] }
     #- { role: gfx, tags: ['gfx'] }
@@ -33,4 +34,3 @@
     #- { role: nix, tags: ['nix'] }
     #- { role: printer, tags: ['printer'] }
     #- { role: astro, tags: ['astro'] }
-    #- { role: podman, tags: ['podman'] }

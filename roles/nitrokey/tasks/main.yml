@@ -1,0 +1,7 @@
+---
+- name: Install nitrokey tools
+  pacman:
+    name:
+      - nitrokey-app
+      - nitrocli
+    state: present
