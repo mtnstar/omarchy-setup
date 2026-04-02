@@ -1,0 +1,17 @@
+---
+- name: clone profile config
+  become: true
+  become_user: "{{ main_user }}"
+  git:
+    repo: https://github.com/mtnstar/profile.git
+    dest: "~/git/setup/profile/"
+    update: yes
+    version: master
+
+- name: create config dir symlink
+  become: true
+  become_user: "{{ main_user }}"
+  file: path=~/.config/hypr
+        src=~/git/setup/profile/hypr
+        state=link
+        force=yes

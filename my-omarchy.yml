@@ -13,6 +13,7 @@
     - { role: nextcloud, tags: ['nextcloud'] }
     - { role: firefox, tags: ['firefox'] }
     - { role: nvim, tags: ['nvim'] }
+    - { role: hyprland, tags: ['hyprland'] }
     #- { role: udev, tags: ['udev'] }
     #- { role: x1c, tags: ['x1c'] }
     #- { role: asdf, tags: ['asdf'] }
