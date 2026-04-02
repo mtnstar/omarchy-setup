@@ -1,0 +1,12 @@
+---
+- name: Install firefox
+  pacman:
+    name:
+      - firefox
+    state: present
+
+- name: Add ublock origin extension to firefox
+  pacman:
+    name:
+      - firefox-ublock-origin
+    state: present

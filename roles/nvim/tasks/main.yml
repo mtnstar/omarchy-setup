@@ -1,0 +1,17 @@
+---
+- name: clone vim config
+  become: true
+  become_user: "{{ main_user }}"
+  git:
+    repo: https://github.com/mtnstar/nvim.git
+    dest: "~/git/setup/nvim"
+    update: yes
+    version: main
+
+- name: create config dir symlink
+  become: true
+  become_user: "{{ main_user }}"
+  file: path=~/.config/nvim
+        src=~/git/setup/nvim
+        state=link
+        force=yes

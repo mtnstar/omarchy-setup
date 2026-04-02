@@ -11,6 +11,8 @@
     - { role: nitrokey, tags: ['nitrokey'] }
     - { role: podman, tags: ['podman'] }
     - { role: nextcloud, tags: ['nextcloud'] }
+    - { role: firefox, tags: ['firefox'] }
+    - { role: nvim, tags: ['nvim'] }
     #- { role: udev, tags: ['udev'] }
     #- { role: x1c, tags: ['x1c'] }
     #- { role: asdf, tags: ['asdf'] }
@@ -19,7 +21,6 @@
     #- { role: i3, tags: ['i3'] }
     #- { role: network-tools, tags: ['network-tools'] }
     #- { role: terminal, tags: ['terminal'] }
-    #- { role: firefox, tags: ['firefox'] }
     #- { role: chromium, tags: ['chromium'] }
     #- { role: vim, tags: ['vim'] }
     #- { role: ruby, tags: ['ruby'] }
