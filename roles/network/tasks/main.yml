@@ -1,9 +1,0 @@
----
-- name: install network manager
-  pacman:
-    name:
-      - networkmanager
-      - network-manager-applet
-    state: latest
-    update_cache: true
-

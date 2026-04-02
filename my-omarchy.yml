@@ -4,7 +4,6 @@
 
   roles:
     #- { role: base, tags: ['base'] }
-    - { role: network, tags: ['network'] }
     - { role: profile, tags: ['profile'] }
     - { role: git, tags: ['git'] }
     - { role: omarchy, tags: ['omarchy'] }
