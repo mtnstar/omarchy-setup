@@ -1,0 +1,18 @@
+---
+- name: Install webcam software
+  pacman:
+    name:
+    - libcamera
+    - libcamera-tools
+    - pipewire-libcamera
+    - xdg-desktop-portal-gtk
+    state: present
+
+- name: Enable PipeWire camera support in Chromium
+  become: true
+  become_user: "{{ main_user }}"
+  lineinfile:
+    path: "~/.config/chromium-flags.conf"
+    line: "--enable-features=WebRTCPipeWireCapturer,WebRtcPipeWireCamera"
+    create: true
+    mode: "0644"
