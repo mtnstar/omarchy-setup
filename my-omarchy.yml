@@ -14,7 +14,10 @@
     - { role: nvim, tags: ['nvim'] }
     - { role: hyprland, tags: ['hyprland'] }
     - { role: yay, tags: ['yay'] }
+    - { role: snap, tags: ['snap'] }
     - { role: x1n, tags: ['x1n'] }
+    - { role: video, tags: ['video'] }
+    - { role: utils, tags: ['utils'] }
     #- { role: udev, tags: ['udev'] }
     #- { role: x1c, tags: ['x1c'] }
     #- { role: asdf, tags: ['asdf'] }
@@ -28,7 +31,6 @@
     #- { role: ruby, tags: ['ruby'] }
     #- { role: docker, tags: ['docker'] }
     #- { role: msg-tools, tags: ['msg-tools'] }
-    #- { role: video, tags: ['video'] }
     #- { role: hyprland, tags: ['hyprland'] }
     #- { role: android, tags: ['android'] }
     #- { role: office, tags: ['office'] }

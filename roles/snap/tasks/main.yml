@@ -1,0 +1,11 @@
+---
+- name: Install snapd
+  kewlfft.aur.aur:
+    name: snapd
+    state: present
+  become: yes
+  become_user: aur_builder
+
+- name: start snapd
+  command: "systemctl enable --now snapd.socket"
+

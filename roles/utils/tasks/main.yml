@@ -1,0 +1,6 @@
+---
+- name: Install firmware update manager
+  pacman:
+    name:
+      - fwupd
+    state: present

@@ -1,0 +1,32 @@
+---
+- name: Install freetube
+  kewlfft.aur.aur:
+    name: freetube
+    state: present
+  become: yes
+  become_user: aur_builder
+
+- name: Install plex desktop
+  community.general.snap:
+    name: plex-desktop
+    state: present
+
+- name: Install video players
+  pacman:
+    name:
+      - mplayer
+      - vlc
+    state: present
+
+- name: Install zoom client
+  kewlfft.aur.aur:
+    name: zoom
+    state: present
+  become: yes
+  become_user: aur_builder
+
+- name: Install shotcut video editor
+  pacman:
+    name:
+      - shotcut
+    state: present
