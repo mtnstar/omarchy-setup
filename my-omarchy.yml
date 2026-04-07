@@ -22,11 +22,10 @@
     - { role: slack, tags: ['slack'] }
     - { role: ufw, tags: ['ufw'] }
     - { role: udev, tags: ['udev'] }
+    - { role: printer, tags: ['printer'] }
     #- { role: x1c, tags: ['x1c'] }
     #- { role: asdf, tags: ['asdf'] }
-    #- { role: gnome, tags: ['gnome'] }
     #- { role: utils, tags: ['utils'] }
-    #- { role: i3, tags: ['i3'] }
     #- { role: network-tools, tags: ['network-tools'] }
     #- { role: terminal, tags: ['terminal'] }
     #- { role: chromium, tags: ['chromium'] }
@@ -40,5 +39,4 @@
     #- { role: gfx, tags: ['gfx'] }
     #- { role: kvm, tags: ['kvm'] }
     #- { role: nix, tags: ['nix'] }
-    #- { role: printer, tags: ['printer'] }
     #- { role: astro, tags: ['astro'] }
