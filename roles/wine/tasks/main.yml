@@ -1,0 +1,22 @@
+---
+- name: Install bottles
+  kewlfft.aur.aur:
+    name: bottles
+    state: present
+  become: yes
+  become_user: aur_builder
+
+- name: Install required libs
+  pacman:
+    name:
+      - lib32-glibc
+      - lib32-glibc
+      - lib32-freetype2
+      - lib32-libxcomposite
+      - lib32-libxinerama
+      - lib32-libxrandr
+      - lib32-libxi
+      - lib32-libxcursor
+      - lib32-gst-plugins-base-libs
+      - lib32-gcc-libs
+    state: present

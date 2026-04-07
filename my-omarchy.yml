@@ -23,6 +23,7 @@
     - { role: ufw, tags: ['ufw'] }
     - { role: udev, tags: ['udev'] }
     - { role: printer, tags: ['printer'] }
+    - { role: wine, tags: ['wine'] }
     #- { role: x1c, tags: ['x1c'] }
     #- { role: asdf, tags: ['asdf'] }
     #- { role: utils, tags: ['utils'] }
