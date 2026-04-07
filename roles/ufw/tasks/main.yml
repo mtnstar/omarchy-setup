@@ -1,0 +1,25 @@
+---
+- name: Install ufw
+  community.general.pacman:
+    name: ufw
+    state: present
+
+- name: Set default incoming policy to deny
+  community.general.ufw:
+    default: deny
+    direction: incoming
+
+- name: Set default outgoing policy to allow
+  community.general.ufw:
+    default: allow
+    direction: outgoing
+
+- name: Enable ufw and start on boot
+  community.general.ufw:
+    state: enabled
+
+- name: Enable and start ufw systemd service
+  ansible.builtin.systemd:
+    name: ufw
+    enabled: true
+    state: started
