@@ -27,3 +27,9 @@
     name:
       - bind
     state: present
+
+- name: Install network utils
+  pacman:
+    name:
+      - arp-scan
+    state: present
