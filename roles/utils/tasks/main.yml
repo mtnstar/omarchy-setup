@@ -21,3 +21,9 @@
     owner: root
     group: root
     mode: "0755"
+
+- name: Install dns utils
+  pacman:
+    name:
+      - bind
+    state: present
