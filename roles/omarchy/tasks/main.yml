@@ -2,7 +2,7 @@
 - name: clone omarchy star blue theme
   become: true
   become_user: "{{ main_user }}"
-  git: repo=https://github.com/mtnstar/omarchy-star-blue-theme.git dest=~/.config/omarchy/star-blue update=yes
+  git: repo=https://github.com/mtnstar/omarchy-star-blue-theme.git dest=~/.config/omarchy/themes/star-blue update=yes
 
 - name: install kitty
   pacman:
