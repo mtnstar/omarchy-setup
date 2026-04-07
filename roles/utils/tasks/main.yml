@@ -32,4 +32,12 @@
   pacman:
     name:
       - arp-scan
+      - tcpdump
+      - dnsmasq
     state: present
+
+- name: Ensure dnsmasq service is stopped
+  systemd:
+    name: dnsmasq
+    state: stopped
+    enabled: false
