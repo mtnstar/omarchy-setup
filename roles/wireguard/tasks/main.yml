@@ -4,3 +4,9 @@
     name:
       - wireguard-tools
     state: present
+
+- name: Create symlink for resolvconf
+  ansible.builtin.file:
+    src: /usr/bin/resolvectl
+    dest: /usr/local/bin/resolvconf
+    state: link
