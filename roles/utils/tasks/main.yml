@@ -3,4 +3,21 @@
   pacman:
     name:
       - fwupd
+      - fwupd-efi
     state: present
+
+- name: Ensure OverrideESPMountPoint is set in fwupd.conf
+  ansible.builtin.lineinfile:
+    path: /etc/fwupd/fwupd.conf
+    regexp: '^#?\s*OverrideESPMountPoint='
+    line: "OverrideESPMountPoint=/boot"
+    insertafter: '^\[uefi_capsule\]'
+  notify: restart fwupd
+
+- name: Ensure EFI/arch directory exists on ESP
+  ansible.builtin.file:
+    path: /boot/EFI/arch
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"

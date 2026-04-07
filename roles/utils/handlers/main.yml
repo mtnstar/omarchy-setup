@@ -1,0 +1,5 @@
+---
+- name: restart fwupd
+  ansible.builtin.systemd:
+    name: fwupd
+    state: restarted
