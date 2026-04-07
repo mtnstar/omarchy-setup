@@ -21,7 +21,7 @@
     - { role: wireguard, tags: ['wireguard'] }
     - { role: slack, tags: ['slack'] }
     - { role: ufw, tags: ['ufw'] }
-    #- { role: udev, tags: ['udev'] }
+    - { role: udev, tags: ['udev'] }
     #- { role: x1c, tags: ['x1c'] }
     #- { role: asdf, tags: ['asdf'] }
     #- { role: gnome, tags: ['gnome'] }
