@@ -20,7 +20,6 @@
     - { role: utils, tags: ['utils'] }
     - { role: wireguard, tags: ['wireguard'] }
     - { role: slack, tags: ['slack'] }
-    - { role: ufw, tags: ['ufw'] }
     - { role: udev, tags: ['udev'] }
     - { role: printer, tags: ['printer'] }
     - { role: wine, tags: ['wine'] }
