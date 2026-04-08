@@ -10,3 +10,14 @@
     src: /usr/bin/resolvectl
     dest: /usr/local/bin/resolvconf
     state: link
+
+- name: Prefer IPv4 over IPv6 in DNS resolution
+  ansible.builtin.lineinfile:
+    path: /etc/gai.conf
+    regexp: '^#?\s*precedence\s+::ffff:0:0/96\s+'
+    line: 'precedence ::ffff:0:0/96  100'
+    state: present
+    create: true
+    owner: root
+    group: root
+    mode: '0644'
