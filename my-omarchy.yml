@@ -8,6 +8,7 @@
     - { role: git, tags: ['git'] }
     - { role: omarchy, tags: ['omarchy'] }
     - { role: nitrokey, tags: ['nitrokey'] }
+    - { role: yubikey, tags: ['yubikey'] }
     - { role: podman, tags: ['podman'] }
     - { role: nextcloud, tags: ['nextcloud'] }
     - { role: firefox, tags: ['firefox'] }

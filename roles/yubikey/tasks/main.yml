@@ -1,0 +1,15 @@
+---
+- name: Install yubikey software
+  pacman:
+    name:
+      - yubikey-manager
+      - libfido2
+      - opensc
+      - ccid
+    state: present
+
+- name: Enable and start pcscd service
+  ansible.builtin.systemd:
+    name: pcscd.service
+    enabled: true
+    state: started
