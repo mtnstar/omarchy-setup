@@ -1,0 +1,50 @@
+---
+- name: Install thinkfan
+  kewlfft.aur.aur:
+    name: thinkfan
+    state: present
+  become: yes
+  become_user: aur_builder
+
+- name: Load thinkpad_acpi with fan_control=1
+  community.general.modprobe:
+    name: thinkpad_acpi
+    params: fan_control=1
+    state: present
+
+- name: Persist thinkpad_acpi module options
+  copy:
+    dest: /etc/modprobe.d/thinkpad_acpi.conf
+    content: "options thinkpad_acpi fan_control=1\n"
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: Deploy thinkfan configuration
+  copy:
+    dest: /etc/thinkfan.conf
+    owner: root
+    group: root
+    mode: "0644"
+    content: |
+      sensors:
+        - tpacpi: /proc/acpi/ibm/thermal
+
+      fans:
+        - tpacpi: /proc/acpi/ibm/fan
+
+      levels:
+        - [0,  0,  55]
+        - [1,  48, 60]
+        - [2,  55, 65]
+        - [3,  60, 70]
+        - [4,  65, 75]
+        - [7,  70, 85]
+        - ["level full-speed", 80, 32767]
+  notify: restart thinkfan
+
+- name: Enable and start thinkfan
+  systemd:
+    name: thinkfan
+    enabled: true
+    state: started

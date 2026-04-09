@@ -1,0 +1,6 @@
+---
+- name: restart thinkfan
+  ansible.builtin.systemd:
+    name: thinkfan
+    state: restarted
+

@@ -3,3 +3,6 @@
   include_tasks: "webcam.yml"
   when: "'ThinkPad X1 Nano Gen 2' in ansible_facts['product_version']"
 
+- name: Install and configure thinkfan
+  include_tasks: "thinkfan.yml"
+  when: "'ThinkPad X1 Nano Gen 2' in ansible_facts['product_version']"
