@@ -26,3 +26,8 @@
   become_user: "{{ main_user }}"
   shell: |
     asdf install ruby 3.4.2
+
+- name: Set default ruby
+  command: "asdf global ruby 3.4.2"
+  become: yes
+  become_user: "{{ main_user }}"
