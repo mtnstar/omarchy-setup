@@ -42,3 +42,9 @@
     name: dnsmasq
     state: stopped
     enabled: false
+
+- name: Install filesystem support
+  pacman:
+    name:
+      - ntfs-3g
+    state: present
