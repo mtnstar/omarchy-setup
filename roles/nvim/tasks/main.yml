@@ -8,6 +8,19 @@
     update: yes
     version: main
 
+- name: Check if config dir path is a symlink
+  ansible.builtin.stat:
+    path: ~/.config/nvim
+  register: nvim_config_dir_stat
+
+- name: Remove config directory if it is not a symlink
+  ansible.builtin.file:
+    path: ~/.config/nvim
+    state: absent
+  when:
+    - nvim_config_dir_stat.stat.exists
+    - not nvim_config_dir_stat.stat.islnk
+
 - name: create config dir symlink
   become: true
   become_user: "{{ main_user }}"
