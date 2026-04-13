@@ -26,7 +26,7 @@
     - { role: wine, tags: ['wine'] }
     - { role: asdf, tags: ['asdf'] }
     - { role: dev-tools, tags: ['dev-tools'] }
-    #- { role: x1c, tags: ['x1c'] }
+    - { role: x1c, tags: ['x1c'] }
     #- { role: utils, tags: ['utils'] }
     #- { role: network-tools, tags: ['network-tools'] }
     #- { role: terminal, tags: ['terminal'] }
