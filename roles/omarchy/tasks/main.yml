@@ -9,7 +9,11 @@
     name:
       - kitty
 
-- name: set kitty as default terminal
+- name: 
+  copy:
+    dest: ~/.config/xdg-terminals.list
+    content: |
+      kitty.desktop
+
   become: true
   become_user: "{{ main_user }}"
-  command: ~/.local/share/omarchy/bin/omarchy-install-terminal kitty
