@@ -48,3 +48,9 @@
     name:
       - ntfs-3g
     state: present
+
+- name: Install bitwarden cli
+  community.general.npm:
+    name: "@bitwarden/cli"
+    global: true
+    state: present
