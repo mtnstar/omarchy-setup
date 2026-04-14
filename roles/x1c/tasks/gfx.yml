@@ -1,0 +1,7 @@
+---
+- name: Install gfx drivers
+  pacman:
+    name:
+      - mesa-utils
+      - mesa
+    state: present

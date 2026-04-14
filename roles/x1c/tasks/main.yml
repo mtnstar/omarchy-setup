@@ -1,38 +1,8 @@
 ---
-- name: Install modem manager (5G)
-  pacman:
-    name:
-      - modemmanager
-      - usb_modeswitch
-    state: present
+- name: Install 5g modem stuff
+  include_tasks: "5g_modem.yml"
+  when: "'ThinkPad X1 Carbon Gen 12' in ansible_facts['product_version']"
 
-- name: Ensure target directory exists
-  file:
-    path: /etc/ModemManager/fcc-unlock.d
-    state: directory
-    owner: root
-    group: root
-    mode: '0755'
-
-- name: Ensure FCC unlock symlink exists for 1eac:1007
-  file:
-    src: /usr/share/ModemManager/fcc-unlock.available.d/1eac:1007
-    dest: /etc/ModemManager/fcc-unlock.d/1eac:1007
-    state: link
-    force: true
-    owner: root
-    group: root
-
-- name: Enable modem manager service
-  become: yes
-  systemd:
-    name: ModemManager
-    enabled: yes
-    state: started
-
-- name: Install gfx drivers
-  pacman:
-    name:
-      - mesa-utils
-      - mesa
-    state: present
+- name: Ensure gfx drivers
+  include_tasks: "gfx.yml"
+  when: "'ThinkPad X1 Carbon Gen 12' in ansible_facts['product_version']"
