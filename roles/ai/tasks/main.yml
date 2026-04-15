@@ -1,0 +1,6 @@
+---
+- name: Install claude-code
+  pacman:
+    name:
+      - claude-code
+    state: present
