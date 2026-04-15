@@ -6,6 +6,7 @@
       - libfido2
       - opensc
       - ccid
+      - pcsc-tools
     state: present
 
 - name: Enable and start pcscd service
@@ -13,3 +14,19 @@
     name: pcscd.service
     enabled: true
     state: started
+
+- name: Ensure .gnupg directory exists
+  become: true
+  become_user: "{{ main_user }}"
+  ansible.builtin.file:
+    path: "~/.gnupg"
+    state: directory
+    mode: "0700"
+
+- name: Configure scdaemon to use pcscd
+  become: true
+  become_user: "{{ main_user }}"
+  ansible.builtin.copy:
+    dest: "~/.gnupg/scdaemon.conf"
+    content: "disable-ccid\n"
+    mode: "0600"
