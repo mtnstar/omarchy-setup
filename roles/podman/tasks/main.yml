@@ -3,4 +3,21 @@
   pacman:
     name:
       - podman
+      - podman-compose
     state: present
+
+- name: Set Podman compose provider
+  community.general.ini_file:
+    path: /etc/containers/containers.conf
+    section: engine
+    option: compose_providers
+    value: '["/usr/bin/podman-compose"]'
+    mode: "0644"
+
+- name: Suppress Podman compose warning logs
+  community.general.ini_file:
+    path: /etc/containers/containers.conf
+    section: engine
+    option: compose_warning_logs
+    value: "false"
+    mode: "0644"
