@@ -1,0 +1,25 @@
+---
+
+- name: install inkscape
+  pacman:
+    name:
+      - inkscape
+    state: present
+
+- name: install gimp
+  pacman:
+    name:
+      - gimp
+    state: present
+
+- name: install okular
+  pacman:
+    name:
+      - okular
+    state: present
+
+- name: install drawio
+  pacman:
+    name:
+      - drawio-desktop
+    state: present
