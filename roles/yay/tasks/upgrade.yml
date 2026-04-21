@@ -1,0 +1,7 @@
+---
+- name: Upgrade all AUR packages
+  kewlfft.aur.aur:
+    upgrade: yes
+    use: yay
+  become: yes
+  become_user: aur_builder
