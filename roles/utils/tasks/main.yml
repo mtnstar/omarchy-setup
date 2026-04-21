@@ -35,6 +35,7 @@
       - tcpdump
       - dnsmasq
       - nmap
+      - net-tools
     state: present
 
 - name: Ensure dnsmasq service is stopped
