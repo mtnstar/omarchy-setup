@@ -23,3 +23,25 @@
     name:
       - drawio-desktop
     state: present
+
+- name: Install qview
+  kewlfft.aur.aur:
+    name: qview
+    state: present
+  become: yes
+  become_user: aur_builder
+
+- name: Set qView as default image viewer
+  become: true
+  become_user: "{{ main_user }}"
+  loop:
+    - image/jpeg
+    - image/png
+    - image/gif
+    - image/webp
+    - image/bmp
+    - image/tiff
+    - image/avif
+  ansible.builtin.command:
+    cmd: xdg-mime default com.interversehq.qView.desktop {{ item }}
+  changed_when: false
