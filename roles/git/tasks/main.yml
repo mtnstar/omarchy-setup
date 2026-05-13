@@ -38,6 +38,14 @@
     dest: ~/.gitignore
     state: link
 
+- name: link git config dir
+  become: true
+  become_user: "{{ main_user }}"
+  file:
+    src: ~/nextcloud/titan/config/git
+    dest: ~/.config/git
+    state: link
+
 - name: setup git config
   become: true
   become_user: "{{ main_user }}"
