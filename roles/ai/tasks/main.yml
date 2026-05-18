@@ -5,9 +5,8 @@
       - claude-code
     state: present
 
-- name: Install Claude Desktop
-  become: yes
-  become_user: aur_builder
-  kewlfft.aur.aur:
+- name: Remove Claude Desktop
+  pacman:
     name: claude-desktop-bin
-    state: present
+    state: absent
+  become: true
