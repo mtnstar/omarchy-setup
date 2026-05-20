@@ -5,6 +5,15 @@
       - claude-code
     state: present
 
+- name: link claude settings
+  become: true
+  become_user: "{{ main_user }}"
+  file:
+    src: '~/git/setup/profile/claude/settings.json'
+    dest: '~/.claude/settings.json'
+    state: link
+    force: true
+
 - name: Remove Claude Desktop
   pacman:
     name: claude-desktop-bin
