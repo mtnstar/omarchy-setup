@@ -1,4 +1,9 @@
 ---
+- name: Install dde requirements
+  community.general.pacman:
+    name: mkcert
+    state: present
+
 - name: Add DDE repository to pacman.conf
   blockinfile:
     path: /etc/pacman.conf
