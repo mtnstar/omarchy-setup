@@ -1,0 +1,13 @@
+---
+- name: Install aws cli
+  pacman:
+    name:
+      - aws-cli-v2
+    state: present
+
+- name: Install aws session manager plugin
+  kewlfft.aur.aur:
+    name: aws-session-manager-plugin
+    state: present
+  become: yes
+  become_user: aur_builder

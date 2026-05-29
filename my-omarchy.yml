@@ -31,6 +31,7 @@
     - { role: gfx, tags: ['gfx'] }
     - { role: vscode, tags: ['vscode'] }
     - { role: dde, tags: ['dde'] }
+    - { role: aws, tags: ['aws'] }
     #- { role: utils, tags: ['utils'] }
     #- { role: network-tools, tags: ['network-tools'] }
     #- { role: terminal, tags: ['terminal'] }
