@@ -13,3 +13,21 @@
     dest: '~/.bashrc'
     state: link
     force: true
+
+- name: link ssh config
+  become: true
+  become_user: "{{ main_user }}"
+  file:
+    src: '~/nextcloud/titan/config/ssh/config'
+    dest: '~/.ssh/config'
+    state: link
+    force: true
+
+- name: link yubikey ssh key files (non confidential)
+  become: true
+  become_user: "{{ main_user }}"
+  file:
+    src: '~/nextcloud/titan/config/ssh/yubikey'
+    dest: '~/.ssh/yubikey'
+    state: link
+    force: true
