@@ -1,0 +1,33 @@
+#!/bin/bash
+cmd=${1:-status}
+
+modem_index() {
+  mmcli -L 2>/dev/null | grep -oP '/org/freedesktop/ModemManager1/Modem/\K[0-9]+' | head -1
+}
+
+case "$cmd" in
+  connect|c)
+    apn=${2:-{{ wwan_apn | default('GPRS.SWISSCOM.CH') }}}
+    idx=$(modem_index)
+    [[ -z "$idx" ]] && { echo "No modem found"; exit 1; }
+    echo "Connecting (APN: $apn)..."
+    mmcli -m "$idx" --simple-connect="apn=$apn"
+    ;;
+  disconnect|d)
+    idx=$(modem_index)
+    [[ -z "$idx" ]] && { echo "No modem found"; exit 1; }
+    mmcli -m "$idx" --simple-disconnect
+    ;;
+  status)
+    idx=$(modem_index)
+    if [[ -z "$idx" ]]; then
+      echo "No modem found"
+      exit 1
+    fi
+    mmcli -m "$idx"
+    ;;
+  *)
+    echo "Usage: 5g {connect|c [apn]|disconnect|d|status}"
+    exit 1
+    ;;
+esac

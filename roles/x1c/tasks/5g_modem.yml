@@ -48,3 +48,62 @@
               systemctl start ModemManager 2>/dev/null
               ;;
       esac
+
+- name: Deploy systemd-networkd config for WWAN interface
+  copy:
+    dest: /etc/systemd/network/30-wwan.network
+    owner: root
+    group: root
+    mode: "0644"
+    content: |
+      [Match]
+      Name=wwan*
+
+      [Network]
+      DHCP=yes
+
+      [DHCP]
+      RouteMetric=200
+
+- name: Enable systemd-networkd
+  systemd:
+    name: systemd-networkd
+    enabled: yes
+    state: started
+
+- name: Deploy 5g shell command
+  template:
+    src: 5g.j2
+    dest: /usr/local/bin/5g
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Deploy WWAN auto-connect service
+  copy:
+    dest: /etc/systemd/system/wwan-connect.service
+    owner: root
+    group: root
+    mode: "0644"
+    content: |
+      [Unit]
+      Description=Connect 5G modem
+      After=ModemManager.service
+      Wants=ModemManager.service
+
+      [Service]
+      Type=oneshot
+      ExecStartPre=/bin/sleep 5
+      ExecStart=/usr/bin/mmcli -m 0 --simple-connect=apn={{ wwan_apn }}
+      RemainAfterExit=yes
+
+      [Install]
+      WantedBy=multi-user.target
+  when: wwan_apn is defined
+
+- name: Enable WWAN auto-connect service
+  systemd:
+    name: wwan-connect
+    enabled: yes
+    daemon_reload: yes
+  when: wwan_apn is defined
