@@ -11,3 +11,11 @@
     src: /usr/bin/vendor_perl/exiftool
     dest: /usr/bin/exiftool
     state: link
+
+- name: Install beekeeper-studio-bin
+  kewlfft.aur.aur:
+    name:
+      - beekeeper-studio-bin
+    state: present
+  become: true
+  become_user: aur_builder
