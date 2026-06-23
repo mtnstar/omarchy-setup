@@ -5,25 +5,32 @@ modem_index() {
   mmcli -L 2>/dev/null | grep -oP '/org/freedesktop/ModemManager1/Modem/\K[0-9]+' | head -1
 }
 
+wait_for_modem() {
+  local retries=15
+  local idx
+  for ((i=1; i<=retries; i++)); do
+    idx=$(modem_index)
+    [[ -n "$idx" ]] && { echo "$idx"; return 0; }
+    echo "Waiting for modem... ($i/$retries)"
+    sleep 1
+  done
+  echo "No modem found after ${retries}s" >&2
+  return 1
+}
+
 case "$cmd" in
   connect|c)
     apn=${2:-{{ wwan_apn | default('GPRS.SWISSCOM.CH') }}}
-    idx=$(modem_index)
-    [[ -z "$idx" ]] && { echo "No modem found"; exit 1; }
+    idx=$(wait_for_modem) || exit 1
     echo "Connecting (APN: $apn)..."
     mmcli -m "$idx" --simple-connect="apn=$apn"
     ;;
   disconnect|d)
-    idx=$(modem_index)
-    [[ -z "$idx" ]] && { echo "No modem found"; exit 1; }
+    idx=$(wait_for_modem) || exit 1
     mmcli -m "$idx" --simple-disconnect
     ;;
   status)
-    idx=$(modem_index)
-    if [[ -z "$idx" ]]; then
-      echo "No modem found"
-      exit 1
-    fi
+    idx=$(wait_for_modem) || exit 1
     mmcli -m "$idx"
     ;;
   *)
