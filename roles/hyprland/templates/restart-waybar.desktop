@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Restart Waybar
+Comment=Kill and relaunch Waybar (use when it crashes)
+Exec=omarchy-restart-waybar
+Icon=preferences-system
+Terminal=false
+Categories=Utility;
+StartupNotify=false
