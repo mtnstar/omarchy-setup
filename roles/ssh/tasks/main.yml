@@ -5,24 +5,6 @@
       - openssh
     state: present
 
-- name: Deploy ssh-agent user service
-  copy:
-    dest: /etc/systemd/user/ssh-agent.service
-    owner: root
-    group: root
-    mode: "0644"
-    content: |
-      [Unit]
-      Description=SSH key agent
-
-      [Service]
-      Type=simple
-      Environment=SSH_AUTH_SOCK=%t/ssh-agent.socket
-      ExecStart=/usr/bin/ssh-agent -D -a $SSH_AUTH_SOCK
-
-      [Install]
-      WantedBy=default.target
-
 - name: Ensure environment.d directory exists
   file:
     path: /etc/environment.d
@@ -52,8 +34,10 @@
       export SSH_ASKPASS=/usr/lib/seahorse/ssh-askpass
       export SSH_ASKPASS_REQUIRE=force
 
-- name: Enable ssh-agent user service
+# openssh ships a socket-activated ssh-agent.socket / ssh-agent.service user
+# unit, so we enable the packaged socket instead of shipping our own unit.
+- name: Enable ssh-agent socket
   systemd:
-    name: ssh-agent.service
+    name: ssh-agent.socket
     scope: global
     enabled: true
