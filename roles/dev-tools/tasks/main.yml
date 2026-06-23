@@ -1,4 +1,10 @@
 ---
+- name: Install security dev tools
+  pacman:
+    name:
+      - gitleaks
+    state: present
+
 - name: Install image tools
   pacman:
     name:
