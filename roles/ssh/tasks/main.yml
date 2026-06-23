@@ -1,0 +1,59 @@
+---
+- name: Install openssh
+  pacman:
+    name:
+      - openssh
+    state: present
+
+- name: Deploy ssh-agent user service
+  copy:
+    dest: /etc/systemd/user/ssh-agent.service
+    owner: root
+    group: root
+    mode: "0644"
+    content: |
+      [Unit]
+      Description=SSH key agent
+
+      [Service]
+      Type=simple
+      Environment=SSH_AUTH_SOCK=%t/ssh-agent.socket
+      ExecStart=/usr/bin/ssh-agent -D -a $SSH_AUTH_SOCK
+
+      [Install]
+      WantedBy=default.target
+
+- name: Ensure environment.d directory exists
+  file:
+    path: /etc/environment.d
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Set ssh-agent environment for user sessions
+  copy:
+    dest: /etc/environment.d/10-ssh-agent.conf
+    owner: root
+    group: root
+    mode: "0644"
+    content: |
+      SSH_AUTH_SOCK=${XDG_RUNTIME_DIR}/ssh-agent.socket
+      SSH_ASKPASS=/usr/lib/seahorse/ssh-askpass
+      SSH_ASKPASS_REQUIRE=force
+
+- name: Set ssh-agent environment for login shells
+  copy:
+    dest: /etc/profile.d/ssh-askpass.sh
+    owner: root
+    group: root
+    mode: "0644"
+    content: |
+      export SSH_ASKPASS=/usr/lib/seahorse/ssh-askpass
+      export SSH_ASKPASS_REQUIRE=force
+
+- name: Enable ssh-agent user service
+  systemd:
+    name: ssh-agent.service
+    scope: global
+    enabled: true
