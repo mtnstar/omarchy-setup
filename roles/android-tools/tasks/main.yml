@@ -1,0 +1,7 @@
+---
+- name: install android tools
+  pacman:
+    name:
+      - android-tools
+    state: latest
+    update_cache: yes

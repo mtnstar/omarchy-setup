@@ -33,6 +33,8 @@
     - { role: vscode, tags: ['vscode'] }
     - { role: dde, tags: ['dde'] }
     - { role: aws, tags: ['aws'] }
+    - { role: ansible, tags: ['ansible'] }
+    - { role: android-tools, tags: ['android-tools'] }
     #- { role: utils, tags: ['utils'] }
     #- { role: network-tools, tags: ['network-tools'] }
     #- { role: terminal, tags: ['terminal'] }
