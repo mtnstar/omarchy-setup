@@ -37,6 +37,7 @@
       - nmap
       - net-tools
       - wget
+      - ipmitool
     state: present
 
 - name: Ensure dnsmasq service is stopped
